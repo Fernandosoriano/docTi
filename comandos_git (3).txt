@@ -1,0 +1,449 @@
+1.-git --version
+
+2.-git help
+
+3.-git help commit
+
+q es el comando para salirte,
+cuando te salen :
+
+para configurar de manera global tu
+usuario y correo de git:
+
+4.-git config --global user.name "Fernando Valle"
+git config --global user.email fersoriano@ciencias.unam.mx
+
+5.-git config --global -e 
+para comprobar tu usuario y correo, también
+te muestra las configuraciones que tengas en 
+git, y tus alias, por lo que puedes editarlos también
+
+6.-git init (inicializar repositorio)
+te crea la carpetita .git, que es la 
+que te permite hacer todo tu control de
+versiones
+
+7.-git status 
+te da informacion sobre los commits, y la
+rama en la que te encuentras
+
+8.-git add 
+te sirve para agregar los archivos al stage area
+puedes agregar toodos los archivos modificados
+con git add .
+
+9.-git reset .DS_Store
+para sacar del sataging area un archivo 
+que no quiereas que esté ahí, en este caso el 
+archivo se llama .DS_Store
+
+10.-git commit -m 'mensage de confirmacion'
+para tomarle una foto a todos los
+archivos que  tengas en el staging area
+
+11.-git checkout -- . reconstruye el proyecto
+a como estaba en el último commit
+
+12.-git branch te lista las ramas que hay en el repo
+
+13.-git branch -m master main 
+para cambiar el nombre de la rama master
+a main
+
+14.-git config --global init.defaultBranch main
+para que todas las ramas principales de tus repos
+se llamen main
+
+15.-git commit -am 'mensage commit'
+Este comando lo que hace es hacer en uno 
+sólo lo que es el add . y el commit
+Recuerda que regularmente siempre hacías:
+* git add .
+* git commit -m 'mensage del commit'
+* git pull para jalar lo que este en el
+remoto
+* arreglar posibles errores del merge
+* si hay conflictos arreglarlos, y
+* hacer el git push
+
+16.-git reset 
+para bajar cambios del stage
+
+17.-git add *.html
+para añadir todos los archivos que terminen 
+con una determinada extensión, en este caso
+.html   
+
+18.-git add css/
+sube todos los archivos subcarpetas que
+se encuentren dentro de una carpeta llamada
+css
+
+19.-git remote
+para ver los remotos que tienes configurados
+
+20.-git remote -v
+muestra las URLs que Git ha asociado al nombre y
+que serán usadas al leer y escribir en ese remoto
+
+21.- git remote show [nombre-remoto]
+Si quieres ver más información acerca de un remoto
+en particular, por ejemplo: git remote show origin
+
+22.-git remote add pb [ruta del servidor donde alojaras el repo]
+Para añadir Repositorios Remotos
+ejemplo: 
+$ git remote
+origin
+$ git remote add pb https://github.com/paulboone/ticgit
+$ git remote -v
+origin	https://github.com/schacon/ticgit (fetch)
+origin	https://github.com/schacon/ticgit (push)
+pb	https://github.com/paulboone/ticgit (fetch)
+pb	https://github.com/paulboone/ticgit (push)
+
+23.-git branch -a
+muestra todas las ramas locales y remotas
+
+24.-git branch -r
+muestra solamente las ramas remotas
+
+25.-git commit --amend -m 'mensage corregido'
+Este comando sirve para corregir un posible
+mensage erroneo del ÚLTIMO COMMIT que hayas 
+hecho.
+
+26.- git commit --amend
+Entra en un modo editor, y para empezar a escribir
+debes presionar a, para editar, y así
+puedes editar el mensage del commit por 
+ejemplo, y para salirte presionas
+:wq! w = escribir, q = quit != salir inmediatamente
+
+27.-git reset --soft HEAD^
+--soft (Para que no sea destructivo), que mantenga
+todos los cambios, es decir te mueve una posicion
+pero que mantenga todos los cambios
+
+28.-git reset --soft hash_commit
+esto te permite regresar a un commit específico
+conservando todos los cambios, y que puedas editar
+algún archivo que se te haya olvidad agrgar algo en el 
+commit y que quieres hacerlo en el mismo
+
+29.-git reset --mixed hash_commit
+Te permite regresar a un commit específico
+,  y tampoco es destructivo, igual qie el 
+--soft, en este caso lo que pasa con lso archivos
+del respectivo commit, es que los saca del stage area
+y quita el seguimiento a los archivos que no 
+existian, los hace de nuevo untracked
+
+30.-git reset --hard
+este comando sí es destructivo entre commilas
+
+31.-git reflog
+te imprime toodos los commits que haz hecho
+en orden cronólogico, y te muestra los hash
+aunque tu hayas hecho resets, te los muestra el 
+git reflog, cosa que con git log ya no te los
+muestra, de este modo puedes volver a 
+cualquier punto en el tiempo que quieras
+con su respectivo hash, usando 
+git reset --hard hash del commit
+
+32.-git merge rama-villanos
+Te sirve para combinar los cambios que hay en la rama
+llamada rama-villanos en este caso debes estar  ubicado
+en la rama en la que quieres combinar los cambios de la
+rama rama*villanos,  por ejemplo estando en master
+
+NOTA: Fast-forward es lo mejor. significa que git logró identificar
+los cambios, y logro  combinarlos sin problema
+
+33.-git branch -d nombre_de_la_rama
+para borrar ramas
+
+34.-git branch -d nombre_de_la_rama -f 
+Forza el borrado de la rama, ya que  por ejemplo
+si git detecta que tienes una rama que no haz 
+hecho merge con master, te advierte, y no te deja borrar
+
+35.-git tag nombre_tag
+Para crear un tag, asociado a un commit 
+en específico
+
+36.-git tag
+Te lista los tags que se hayan creado
+
+37.-git tag -d nombre_tag
+Borra el tag indicado
+En los tags se acostumbra a trabajar con
+versionamiento semántico, para eso usas el
+siguiente comando:
+
+38.-git tag -a v1.0.0 -m "Version 1.0.0 lista"
+el -a significa anoted, te indica que la aplicación
+ya está en un punto super madura para poder ser desplegasda
+
+39.-git config --global alias.s "status --short"
+ejemplo de como crear un alias para un comando 
+de git
+otro ejemplo:git config --global alias.lg "log --graph 
+--abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) 
+- %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- 
+%an%C(reset)%C(bold yellow)%d%C(reset)' --all"
+Estructura:
+alias.el_nombre_con_el_que_vas_a_ejecutar_un_comando_especícfico
+y después pones el comando completo que va a ejecutar
+tu alias
+
+40.-git log --oneline
+Una forma de mostrar los commits de una forma corta
+sólo te muestra el hash, y el mensaje del commit
+
+41.-git log --oneline --decorate --all --graph
+te ayuda a visualizar las uniones que puede haber
+entre ramas
+
+42.-git stash
+para guardar cambios que no están listos para ser
+comitteados, los guardas en una especie de boveda
+temporalmente
+
+43.-git stash list
+para listar todos los stash que tienes 
+disponibles
+
+44.-git stash pop
+para recuperar el último stash, y al mismo tiempo borra
+el stash de tu lista de stashes
+
+45.-git stash clear
+para borrar toodos los stash, sin preguntar nada
+
+46.-git stash apply stash@{0}
+te aplica los cambios en el  stash 0, que
+es el último que hiciste, sólo que esto tiene
+un posible inconveniente, y esque te
+crea un stash más
+
+47.-git stash drop stash@{0}
+te borra el stash inidcado
+
+48.-git stash save 'agregamos a loki en villanos'
+para salvar un stash con un nombre específico
+
+49.-git stash list --stat
+te miuestra más información de los cambios hechos
+en cada stash
+
+50.-git rebase master
+te sirve para traerte commits que estén en master
+y no estén en mi rama local que uso para desarrrollar (dev)
+de este modo después que intente hacer el merge con master
+habra un fast forward (union sin pedos), pues ya tendré todo lo 
+que tiene masterpara hacer el git rebase, debes estar parado
+en la ram que vas a traerte los commits de mster
+aunque fernando herrera dice que el  prefiere hacer un merge
+a masterestando en la rama que usas para desarrollar
+de este modo puedes arreglar conflictos, y ya que
+tienes igual todo lo de master en tu rama de dev
+puedes hacer el merge en master de tus cambios en dev
+que en principio deven pasar sin pedos como un fast forward
+
+51.-git merge rama-misiones-completadas
+una vez que aplicas el git rebase master
+la rama creada a partir de master por ejemplo 
+que sea la que aún tiene commits que no se unen
+con master tendrá todos los commits de master
+por lo cual ya se puede aplicar un merge, recuerda
+que para hacer el merge, debes estar colocado
+en la rama a la cual le quieres unir cambios de 
+otra rama
+
+NOTA: los pasos 50 y 51 no suelen usarse mucho
+pues lo más inidcado sería realizar el merge, y 
+después resolver los conflictos manualmente
+
+52.-git rebase -i HEAD~4
+te sirve para unir dos commits en uno sólo,
+o también para  editar el mensage de un commit
+pasa a veces que separaste en dos commits lo que
+podría bien haberse hecho en uno sólo, en este caso
+te estarías trayendo los últimos 4 commits
+cuando le das enter te trae algo como los que
+se ve a continuación:
+
+Commands:
+# p, pick <commit> = use commit
+# r, reword <commit> = use commit, but edit the commit message (Editas mensage de un commit)
+# e, edit <commit> = use commit, but stop for amending
+# s, squash <commit> = use commit, but meld into previous commit  (UNE 2 commits)
+# f, fixup [-C | -c] <commit> = like "squash" but keep only the previous
+#                    commit's log message, unless -C is used, in which case
+#                    keep only this commit's message; -c is same as -C but
+#                    opens the editor
+# x, exec <command> = run command (the rest of the line) using shell
+# b, break = stop here (continue rebase later with 'git rebase --continue')
+# d, drop <commit> = remove commit
+# l, label <label> = label current HEAD with a name
+# t, reset <label> = reset HEAD to a label
+# m, merge [-C <commit> | -c <commit>] <label> [# <oneline>]
+# .       create a merge commit using the original merge commit's
+# .       message (or the oneline, if no original merge commit was
+# .       specified); use -c <commit> to reword the commit message
+These lines can be re-ordered; they are executed from top to bottom.
+#
+# If you remove a line here THAT COMMIT WILL BE LOST.
+#
+# However, if you remove everything, the rebase will be aborted.
+#
+<xis/Documents/git-course/08-demo-rebase/.git/rebase-merge/git-rebase-todo [unix] (15:12 28/12/2021)31,1 Bot-- INSERT --
+
+Nota: para poder escribir en este editor tienes que estar en
+modo insert, el cual se logra con ctrl+a o ctrl+i
+
+en la parte de hasta arriba de este editor aparece:
+
+pick 158ba9e Se agrego a la liga: Volcán Negro
+pick 96346d8 Agregamos el archivo de las misiones completadas
+pick f530145 Actualizamos dos misiones completadas al momento
+
+en este caso salen los últimos 3 commits
+y si quieres fusionar el último commit con el 
+penúltimo, debes poner una s de squash al 
+último de la lsita, que es el último commit
+ojo, no debes poner una s a todos los commits que
+quieras unir, sólo al último en este caso, es decir
+al que le pongas s, toma el anterior y los fusiona
+en uno sólo
+
+Este proceso también te sirve para corregitr mensages de comits
+y para esto debes  poner una r de reword a cada commit que
+quieras editar y se te abre otro editor en el que debes 
+presionar a o i para entrar a modo insert y poder editar
+el commit que requieras
+
+53.-git checkout -- .\README.md
+te sirve para regresar los cambios a como estaban
+originalmente los archivos, ene ste caso se regresa
+a su estado original (antes de los cambios) el
+archivo readme.md
+
+54.-git remote add origin link
+
+add = agregar
+origin = un standard del nombre del repo remoto,
+aunque puede tener cualquier otro nombre
+
+55.-git remote -v
+te arroja las fuentes remotas fetch y push
+
+56.-git push -u origin master 
+origin = nombre del repo al que quires mandar
+master = nombre de la rama a la que deseas enviar
+info desde el repo local
+-u = ayuda a que la próxima vez que necesites hacer
+push, no necesites específicar la rama
+=============================================
+***************************
+git remote add origin link
+git branch -M main
+git push -u origin main
+***************************
+57.-git config --global pull.rebase true
+configuración global, conveniente, para
+que por ejemplo si en mi local tengo algo 
+distinto a lo que hay en el main de origin
+pues me arroje los archivos en los que hay
+conflictos
+
+58.-git checkout "hash" "file_name"
+esto te sirve para regresar a un archivo 
+específico en un commit determinado, y te lo
+regresa a como estaba en ese punto del tiempo
+
+59.-git remote add upstream link_repo:original
+para agregar como remoto el repo original, en 
+el caso de que hayas hecho un fork de este último
+, de este modo, puedes actualizar tu fork, haciendo
+un pull desde el remoto original (el repo del que
+hiciste un fork), con git pull upstream master
+NOTA: upstream  es el nombre que seda por connención
+a los repos de los cuales solamente vas a hacer pull
+(taer información)
+
+NOTAS: hay dos formas de integrar tus cambios al master
+de un repo remoto:
+1 
+ 1.2 clonas el proyecto
+ 1.2 creas tu rama local a partir de tu master local
+ 1.3 publicas tu rama al repo remoto
+ 1.4 desarrollas en tu rama
+ 1.5 haces un push a tu misma rama, pero que está en el remoto (origin)
+ 1.6 empieza el proceso de pull request
+ 1.7 haces el pull request
+ 1.8 haces el merge pull request
+
+2
+ 2.1 clonas el repo
+ 2.2 creas tu rama
+ 2.3 te mueves a tu master, y haces el merge con tu rama
+ 2.4 haces un push desde master
+
+60.-git push --set-upstream origin nombre_rama
+comando para publicar tu rama local al repo remoto
+
+61.- git pull --all
+te sirve para jalar todas las ramas creadas 
+en el repo remoto, de compañeros que trabajen en el mismo
+
+62.-git branch --all
+para poder las ramas que jalas en el punto 61.-, es decir
+te muestra tanto ramas creadas por uno mismo, como
+las que puedas jalar de otros compañeros, para
+revisar su trabajo
+
+63.- git remote prune origin
+borra todas las ramas que en el remoto ya
+no existen
+
+64.-git push --tags
+para suir tus tags
+
+65.-git push origin :rama_a_borrar
+para borrar ramas desde git en el remoto
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
