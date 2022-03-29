@@ -1,0 +1,32 @@
+   pasos para tratar proyecto de PYTHON con ambientes virtuales:
+
+1.- pip install virtualenv  para poder LEVANTAR AMBIENTES VIRTUALES
+
+2.- python -m venv env_name levantar el ambiente vitual, en este caso 
+    se llama env_name
+
+3.- .\env_name\Scripts\activate  para ACTIVAR EL AMBIENTE
+
+4.- para SELECCIONAR EL INTERPRETE DE PYTHON en un ambiente virtual
+    en visualstudio debes presionar f1, y escribir 
+    python: select interpreter, y sleccionas el recomendado
+
+NOTA: env_name = el nombre que le quieras poner a tu ambiente virtual
+
+=========================================================================
+                    MANEJO DE LIBRERÍAS:
+
+pip list TE LISTA LIBRERÍAS que tengas instaladas
+
+para GENERAR UN REQUIREMENTS, estando en un ambiente
+virtual, usa el comando: python -m pip  freeze > requirements.txt
+sino estás en un ambiente virtual sería: 
+pip freeze > requirements.txt
+
+pip install -r  .\requirements.txt  para INSTALAR TODAS LAS LIBRERÍAS 
+que vengan en el requirements.txt, es análogo al npm install, si estás
+en un ambiente virtual usas: python -m pip install -r requirements.txt
+
+NOTA: parace que cada que quieras ejecutar comandos estando 
+en un ambiente virtual debes anteponer python -m y luego el  comando
+

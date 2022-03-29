@@ -1,0 +1,69 @@
+Pasos para crear un proyect de django (pensando en una api rest)
+
+pip install virtualenv  para poder LEVANTAR AMBIENTES VIRTUALES
+
+** 1.- Crea tu ambiente virtual y activalo: 
+      1.1 python -m venv env_name
+
+      1.2 .\env_name\Scripts\activate
+
+      1.3 para SELECCIONAR EL INTERPRETE DE PYTHON en un ambiente virtual
+          en visualstudio debes presionar f1 o ctrl+shift+p, y escribir 
+          python: select interpreter, y sleccionas el recomendado
+      
+
+** 2.- Instala django: python -m pip install django
+
+** 3.- Crea tu proyecto principal de django:
+
+      django-admin startproject nombre_de_tu_proyecto
+
+      (si le agregas un .)
+      hace que la carpeta del proyecto se genere en la 
+      carpeta raíz, pues de otro modo te genera otra
+      carpeta, y tienes dos carpetas con el mismo nombre
+
+** 4.- Crea una aplicación: 
+       
+       python manage.py startapp nombre_de_la_app
+
+** 5.- Registra tu aplicación en settings
+
+** 6.- Configura la BD que vas a utilzar, esto se hace igual en
+       settings
+
+** 7.- haz las migraciones iniciales a la BD con:
+
+       python manage.py migrate
+
+** 8.- Crea tus clases de modelo en models.py
+
+** 9.- Creas archivos de migración con el comando 
+
+       python manage.py makemigrations
+
+** 10.-para crear la tabla y ver cómo se creó, usas el comando:
+
+       python manage.py migrate 
+ 
+       esto migra a la BD, todas las migraciones pendientes
+
+** 11.-Para poder ver tu clase de modelo como una tabla,
+       registra el modelo en admin de la siguiente  manera:
+       
+       admin.site.register(nombre_de_tu_clase_de_modelo)
+
+** 12.-Para poder acceder a la seccción de administración que
+       te ofrece django, debes crear un super usuario con:
+
+       python manage.py createsuperuser
+        username: define un usuario
+        email: un correo
+        pass: y una contraseña
+       ejecutar el server y entrar a /admin
+
+NOTA: python ./manage.py runserver 8000 Para INICIAR (arrancar) el proyecto en el puerto que especifiques
+
+     Puedes instalar django rest framework
+     pip install djangorestframework
+     pip install django-cors-headers
