@@ -1,11 +1,17 @@
 1.-git --version
+te dice la versión de git que tienes
 
 2.-git help
+te ofrece información sobre distintos comandos de git
 
 3.-git help commit
 
 q es el comando para salirte,
 cuando te salen :
+puedes presionar Esc + : + w + q + !
+ w = escribir y guardar
+ q =  salir
+ ! = que lo haga inmediatamente
 
 para configurar de manera global tu
 usuario y correo de git:
@@ -125,22 +131,35 @@ ejemplo, y para salirte presionas
 todos los cambios, es decir te mueve una posicion
 pero que mantenga todos los cambios
 
+NOTAS: básicamente este reset lo que hace es eliminar el último 
+commit, para que puedas hacer uno nuevo, en el que quizá
+quieras añadir o modificar más cosas, y esto aparezca en 
+un nuevo commit el head con el techito te lleva al commit que 
+se encuentra antes de donde está ubicado actualmente el HEAD
+y el soft es para que no se pierdan los cambios, sólo te
+regresa a ese commit anterior y ya puedes hacer un nuevo commit con
+esos cambios que no se perdieron y a la vez agregando algo nuevo
+que quizá se te haya olvidad combinar en un mismo commit
+
 28.-git reset --soft hash_commit
 esto te permite regresar a un commit específico
 conservando todos los cambios, y que puedas editar
-algún archivo que se te haya olvidad agrgar algo en el 
+algún archivo que se te haya olvidad agregar algo en el 
 commit y que quieres hacerlo en el mismo
 
 29.-git reset --mixed hash_commit
 Te permite regresar a un commit específico
-,  y tampoco es destructivo, igual qie el 
---soft, en este caso lo que pasa con lso archivos
+,  y tampoco es destructivo, igual que el 
+--soft, en este caso lo que pasa con los archivos
 del respectivo commit, es que los saca del stage area
 y quita el seguimiento a los archivos que no 
 existian, los hace de nuevo untracked
 
 30.-git reset --hard
-este comando sí es destructivo entre commilas
+este comando te permite regresar a un hash específico, aunque
+ya no exista el commit en la lista de log, pero como?
+sino aparece en la lista de log, cómo recupero el hash al 
+que quiero regresar?, pues con git reflog!!
 
 31.-git reflog
 te imprime toodos los commits que haz hecho
@@ -156,7 +175,7 @@ git reset --hard hash del commit
 Te sirve para combinar los cambios que hay en la rama
 llamada rama-villanos en este caso debes estar  ubicado
 en la rama en la que quieres combinar los cambios de la
-rama rama*villanos,  por ejemplo estando en master
+rama llamada rama-villanos, por ejemplo estando en master
 
 NOTA: Fast-forward es lo mejor. significa que git logró identificar
 los cambios, y logro  combinarlos sin problema
@@ -208,7 +227,7 @@ entre ramas
 
 42.-git stash
 para guardar cambios que no están listos para ser
-comitteados, los guardas en una especie de boveda
+comiteados, los guardas en una especie de boveda
 temporalmente
 
 43.-git stash list
@@ -243,10 +262,10 @@ te sirve para traerte commits que estén en master
 y no estén en mi rama local que uso para desarrrollar (dev)
 de este modo después que intente hacer el merge con master
 habra un fast forward (union sin pedos), pues ya tendré todo lo 
-que tiene masterpara hacer el git rebase, debes estar parado
-en la ram que vas a traerte los commits de mster
+que tiene master para hacer el git rebase, debes estar parado
+en la rama que vas a traerte los commits de master
 aunque fernando herrera dice que el  prefiere hacer un merge
-a masterestando en la rama que usas para desarrollar
+a master estando en la rama que usas para desarollar
 de este modo puedes arreglar conflictos, y ya que
 tienes igual todo lo de master en tu rama de dev
 puedes hacer el merge en master de tus cambios en dev
@@ -266,13 +285,13 @@ NOTA: los pasos 50 y 51 no suelen usarse mucho
 pues lo más inidcado sería realizar el merge, y 
 después resolver los conflictos manualmente
 
-52.-git rebase -i HEAD~4
+52.-git rebase -i HEAD~4 
 te sirve para unir dos commits en uno sólo,
 o también para  editar el mensage de un commit
 pasa a veces que separaste en dos commits lo que
-podría bien haberse hecho en uno sólo, en este caso
-te estarías trayendo los últimos 4 commits
-cuando le das enter te trae algo como los que
+podría bien haberse hecho en uno sólo, en este ejemplo
+escrito, el 4 significa que te estarías trayendo los últimos
+4 commits, cuando le das enter te trae algo como los que
 se ve a continuación:
 
 Commands:
@@ -301,7 +320,7 @@ These lines can be re-ordered; they are executed from top to bottom.
 #
 <xis/Documents/git-course/08-demo-rebase/.git/rebase-merge/git-rebase-todo [unix] (15:12 28/12/2021)31,1 Bot-- INSERT --
 
-Nota: para poder escribir en este editor tienes que estar en
+NOTA: para poder escribir en este editor tienes que estar en
 modo insert, el cual se logra con ctrl+a o ctrl+i
 
 en la parte de hasta arriba de este editor aparece:
@@ -312,8 +331,8 @@ pick f530145 Actualizamos dos misiones completadas al momento
 
 en este caso salen los últimos 3 commits
 y si quieres fusionar el último commit con el 
-penúltimo, debes poner una s de squash al 
-último de la lsita, que es el último commit
+penúltimo, debes poner una s (de squash) al 
+último de la lista, que es el último commit
 ojo, no debes poner una s a todos los commits que
 quieras unir, sólo al último en este caso, es decir
 al que le pongas s, toma el anterior y los fusiona
@@ -323,7 +342,7 @@ Este proceso también te sirve para corregitr mensages de comits
 y para esto debes  poner una r de reword a cada commit que
 quieras editar y se te abre otro editor en el que debes 
 presionar a o i para entrar a modo insert y poder editar
-el commit que requieras
+el commit que requieras.
 
 53.-git checkout -- .\README.md
 te sirve para regresar los cambios a como estaban
@@ -415,6 +434,9 @@ para suir tus tags
 65.-git push origin :rama_a_borrar
 para borrar ramas desde git en el remoto
 
+
+66.- git checkout -b nombre-rama
+Te crea nueva rama, y te mueve ahacia ella
 
 
 
